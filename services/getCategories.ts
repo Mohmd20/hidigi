@@ -1,7 +1,7 @@
 import { axiosInastance } from "./axiosConfig"
 
 export const getCategories = async () => {
-    const res = await axiosInastance.post("https://api.hidigimenu.com/Sale/v1/Category/hidigimenu/List",{
+    const res = await axiosInastance.post("/Sale/v1/Category/hidigimenu/List",{
             totalCount: 0,
             pageIndex: 0,
             itemsPerPage: 0,

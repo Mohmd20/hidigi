@@ -1,9 +1,18 @@
 'use client'
 import { data } from "@/app/branch/page";
-import { createContext, useState } from "react";
-type contextType = {
-    data: data,
+import { createContext, useEffect, useState } from "react";
+
+type discountData = {
+    discountPercent:number
+        discountPrice:number
+        currentPrice:number
+        priceAfterDiscount:number   
+}
+export type contextType = {
+    data: data
     setData: React.Dispatch<React.SetStateAction<data>>
+    discountData:discountData
+    setDiscountData: React.Dispatch<React.SetStateAction<discountData>>
 }
 export const Context = createContext<contextType | null>(null)
 export const ContextProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -44,8 +53,25 @@ export const ContextProvider: React.FC<{ children: React.ReactNode }> = ({ child
             }
         ]
     })
+    const [discountData,setDiscountData] = useState({
+        discountPercent:0,
+        discountPrice:0,
+        currentPrice:0,
+        priceAfterDiscount:0
+    })
+    useEffect(()=>{
+        setData(d => {
+            return {
+                ...d,
+                discountPrice: discountData.discountPrice,
+                price: discountData.priceAfterDiscount ?? discountData.currentPrice,
+            }
+        })
+    },[discountData.currentPrice, discountData.discountPrice, discountData.priceAfterDiscount])
     const contextValue = {
         data,
+        discountData,
+        setDiscountData,
         setData
     }
     return (

@@ -1,6 +1,8 @@
+'use client'
 import useGetUnits from '@/hook/query/useGetUnits'
 import { Context } from '@/store/Context'
 import React, { useContext, useEffect } from 'react'
+import DropDown from './ui/DropDown'
 type unitsItems = {
     pageCount: number
     totalCount: number
@@ -32,7 +34,7 @@ const Units = () => {
         mutateUnit()
     }, [mutateUnit])
     return (
-        <select onChange={(e) => ctx?.setData(d => {
+        <DropDown className='w-[50%]' title='واحد' required onChange={(e) => ctx?.setData(d => {
             return {
                 ...d,
                 unitId: parseInt(e.target.value)
@@ -46,7 +48,7 @@ const Units = () => {
                 )
             }
             )}
-        </select>
+        </DropDown>
     )
 }
 

@@ -5,7 +5,7 @@ type button = {
   } & React.ComponentPropsWithoutRef<'button'>
 const Button : React.FC<button> =  ({children,className,...props}) => {
   return (
-    <button {...props} className={`bg-slate-800 rounded-tl-[30px] rounded-bl-[60px] rounded-br-[30px] rounded-tr-[60px] text-white  px-[40px] py-[18px] ${className}`}>{children}</button>
+    <button {...props} className={`px-6 flex text-white rounded-md gap-2 items-center justify-center  py-2 bg-[#4287db] ${className}`}>{children}</button>
   )
 }
 

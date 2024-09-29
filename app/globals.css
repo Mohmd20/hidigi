@@ -17,6 +17,59 @@
 body {
   background-color: #f5f6f9
 }
+  input[type=range] {
+    width: 100%;
+    height: 10px;
+    background: #fafafa;
+    border-radius: 50px;
+    outline: none;
+
+  }
+
+  input[type="range"]::-webkit-slider-runnable-track {
+    background-color: #3b3bcf;
+    height: 0.5rem;
+    position: relative;
+    border-radius: 50px;
+}
+
+input[type="range"]::-moz-range-progress {
+    background-color: #3b3bcf;
+    height: 0.5rem;
+    position: relative;
+    border-radius: 50px;
+
+}
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px; 
+    height: 20px;
+    background: #5160ab; 
+    cursor: pointer;
+    border-radius: 50%; 
+    
+  }
+
+  input[type=range]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: #5160ab; 
+    cursor: pointer;
+    border-radius: 50%;
+  }
+
+
+  input[type=range]::-ms-thumb {
+    width: 16px;
+    height: 16px;
+    background: #3b3bcf; 
+    cursor: pointer;
+    border-radius: 50%;
+  }
+
+
+
 
 @layer utilities {
   .text-balance {

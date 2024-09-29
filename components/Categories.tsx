@@ -1,6 +1,7 @@
 import { useGetCategory } from '@/hook/query/useGetCategory'
 import { Context } from '@/store/Context'
 import React, { useContext, useEffect } from 'react'
+import DropDown from './ui/DropDown'
 type categoryResultType = {
     menusId: null
     pageCount: number
@@ -30,21 +31,21 @@ const Categories = () => {
         return <div>loading</div>
     }
   return (
-    <select onChange={(e) => ctx?.setData(d => {
+    <DropDown className='w-[50%]' title='دسته بندی' required onChange={(e) => ctx?.setData(d => {
         return {
             ...d,
             categoriesId: parseInt(e.target.value)
         }
     })} name="" id="">
         {categories && (categories.result as categoryResultType).items.map(m => {
-            return (
+            return (        
                 <option key={m.name + m.id} value={m.id}>
                     {m.name}
                 </option>
             )
         }
         )}
-    </select>
+    </DropDown>
   )
 }
 

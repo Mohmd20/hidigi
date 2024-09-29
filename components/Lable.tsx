@@ -1,7 +1,7 @@
-import { data } from '@/app/branch/page'
 import { useGetLabel } from '@/hook/query/useGetLabel'
 import { Context } from '@/store/Context'
 import React, { useContext } from 'react'
+import Loading from './ui/Loading'
 type lableResult = {
     value: number
     content: string
@@ -11,7 +11,7 @@ const Lable = () => {
 
     const { data: label, isLoading: isLoadingLabel } = useGetLabel()
     if (isLoadingLabel) {
-        return <div>loading</div>
+        return <Loading/>
     }
     return (
         <select onChange={(e) => ctx?.setData(d => {
