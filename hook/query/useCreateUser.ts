@@ -2,7 +2,7 @@
 import { createUser } from "@/services/userServices";
 import { useMutation } from "@tanstack/react-query";
 import Cookies from "js-cookie";
-import { redirect, useRouter } from "next/navigation";
+import {  useRouter } from "next/navigation";
 type userData = {
   status: number
   message: string

@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import { useCreateUser } from '@/hook/query/useCreateUser';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import Cookies from "js-cookie"
 const LoginForm = () => {
     const router = useRouter()

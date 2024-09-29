@@ -1,6 +1,6 @@
 'use client'
 import { useMutation } from '@tanstack/react-query'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { axiosInastance } from '@/services/axiosConfig'
 import Cookies from "js-cookie"
 import MealForm from '@/components/MealForm'
@@ -55,9 +55,11 @@ const Branch = () => {
     const [tagsTemp, setTagsTemp] = useState<string | null>(null)
     const ctx = useContext(Context)
     const router = useRouter()
-    if(!Cookies.get("auth")){
-        router.push("/login")
-    }
+    useEffect(()=>{
+        if(!Cookies.get("auth")){
+            router.push("/login")
+        }
+    },[])
    function handlePeriorty(e: React.ChangeEvent<HTMLInputElement>) {
         ctx?.setData(d => {
             return {
