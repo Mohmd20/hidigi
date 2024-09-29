@@ -4,7 +4,7 @@ type Input = {
 } & React.ComponentPropsWithoutRef<'input'>
 const Input : React.FC<Input> = ({className,...props}) => {
   return (
-    <input {...props}  className={`bg-[#e4e7eb] rounded-md pr-2 border-none ${className}`} />
+    <input {...props}  className={`bg-[#e4e7eb] rounded-md p-2 focus:outline-none border-none ${className}`} />
   )
 }
 
