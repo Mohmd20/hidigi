@@ -2,7 +2,7 @@
 import { useMutation } from '@tanstack/react-query'
 import React, { useContext, useState } from 'react'
 import { axiosInastance } from '@/services/axiosConfig'
-
+import Cookies from "js-cookie"
 import MealForm from '@/components/MealForm'
 import Status from '@/components/Status'
 import Lable from '@/components/Lable'
@@ -11,6 +11,7 @@ import Categories from '@/components/Categories'
 import Interseptor from '@/components/Interseptor'
 import { Context } from '@/store/Context'
 import Units from '@/components/Units'
+import { useRouter } from 'next/navigation'
 export type data = {
     name: string,
     itemCode: string,
@@ -53,8 +54,10 @@ const Branch = () => {
     const [barcodesTemp, setBarcodesTemp] = useState<string | null>(null)
     const [tagsTemp, setTagsTemp] = useState<string | null>(null)
     const ctx = useContext(Context)
-    
-    
+    const router = useRouter()
+    if(!Cookies.get("auth")){
+        router.push("/login")
+    }
    function handlePeriorty(e: React.ChangeEvent<HTMLInputElement>) {
         ctx?.setData(d => {
             return {

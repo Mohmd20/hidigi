@@ -25,7 +25,7 @@ export const useCreateUser = () => {
     mutationFn: createUser,
     onSuccess: (data: userData) => {
       Cookies.set("auth", JSON.stringify(data.result.token), { expires: 1 });
-      redirect("/branch")
+      router.push("/branch")
     },
     onError: (error) => {
       console.log(error.message);

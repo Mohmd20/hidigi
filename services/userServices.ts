@@ -5,7 +5,7 @@ type CreateUser = {
 };
 export const createUser = async ({ userName, password }: CreateUser) => {
   const res = await axiosInastance.post(
-    "/Authentication/Signin",
+    "/api/Authentication/Signin",
     { userName, password },
   );
   return res.data;

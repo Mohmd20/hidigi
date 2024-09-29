@@ -1,25 +1,29 @@
 'use client'
 import React, { useState } from 'react'
 import { useCreateUser } from '@/hook/query/useCreateUser';
-
+import { useRouter } from 'next/router';
+import Cookies from "js-cookie"
 const LoginForm = () => {
-
+    const router = useRouter()
     const [userData, setUserData] = useState({
-        userName:"",
-        password:""
+        userName: "",
+        password: ""
     })
-    const { mutate , isPending , isError , error } = useCreateUser()
-    const handleChangeData = (e : React.ChangeEvent<HTMLInputElement>) => {
+    const { mutate, isPending, isError, error } = useCreateUser()
+    const handleChangeData = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUserData(data => {
-            return {...data, [e.target.name]: e.target.value }
+            return { ...data, [e.target.name]: e.target.value }
         })
     }
-    const handleSubmit = (e : React.FormEvent) => {
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         mutate(userData)
     }
-    if(isError){
+    if (isError) {
         return <div>{error.message}</div>
+    }
+    if (Cookies.get("auth")) {
+        router.push("/branch")
     }
     return (
         <div className='w-full h-full flex items-center justify-center mt-24'>

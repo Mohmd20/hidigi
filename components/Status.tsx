@@ -1,11 +1,9 @@
-import { data } from '@/app/branch/page'
 import { useGetStatus } from '@/hook/query/useGetStatus'
 import { Context } from '@/store/Context'
 import React, { useContext } from 'react'
 
 const Status = () => {
     const ctx = useContext(Context)
-
     const { data: status, isLoading: isLoadingStatus } = useGetStatus()
     if (isLoadingStatus) {
         return <div>loading</div>
