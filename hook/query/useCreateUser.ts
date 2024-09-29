@@ -26,6 +26,7 @@ export const useCreateUser = () => {
     onSuccess: (data: userData) => {
       Cookies.set("auth", JSON.stringify(data.result.token), { expires: 1 });
       router.push("/branch")
+      window.location.href = "/branch";  
     },
     onError: (error) => {
       console.log(error.message);

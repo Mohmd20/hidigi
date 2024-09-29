@@ -6,7 +6,7 @@ export const axiosInastance = axios.create({
     "Content-Type": "application/json",
   },
 });
-if (Cookies.get("auth")) {
-  axiosInastance.defaults.headers["Authorization"] = `Bearer ${JSON.parse(Cookies.get("auth")!
-  )}`;
+const authCookie = Cookies.get("auth");
+if (authCookie) {
+  axiosInastance.defaults.headers["Authorization"] = `Bearer ${JSON.parse(authCookie)}`;
 }
